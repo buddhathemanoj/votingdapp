@@ -1,13 +1,12 @@
 const hre = require("hardhat");
 
 async function main() {
-  const Voting = await hre.ethers.getContractFactory("Voting");
-  const voting = await Voting.deploy("My Election");
-  
-  // Wait for the contract to be mined
-  await voting.waitForDeployment();
+  const VotingSystem = await hre.ethers.getContractFactory("VotingSystem");
+  const votingSystem = await VotingSystem.deploy();
 
-  console.log("Voting contract deployed to:", await voting.getAddress());
+  await votingSystem.waitForDeployment();
+
+  console.log("VotingSystem deployed to:", await votingSystem.getAddress());
 }
 
 main().catch((error) => {
